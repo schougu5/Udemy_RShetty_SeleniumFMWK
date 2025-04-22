@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="true" name="Suite">
+<!-- <groups>
+	<run>
+		<include name="AuthenticationCases"></include>
+	</run> 
+
+</groups>-->
+
+<listeners>
+	<listener class-name="testComponents.Listeners"></listener>
+
+</listeners>
+
+
+
+  
+  <test thread-count="5" name="Positive_SubmitOrderTest">
+    <classes>
+     <class name="tests.SubmitOrderTest"/>
+    </classes>
+  </test> 
+  
+ 
+  
+  
+</suite> <!-- Suite -->
