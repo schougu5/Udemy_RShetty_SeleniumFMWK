@@ -29,7 +29,7 @@ import pageObjects.OrderHistoryPage;
 import pageObjects.ProductsCatalogue;
 import testComponents.BaseTest;
 
-
+//gitclonetest
 public class SubmitOrderTest extends BaseTest {
 
 	public ProductsCatalogue pc;
