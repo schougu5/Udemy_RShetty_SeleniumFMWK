@@ -14,20 +14,20 @@
 </listeners>
 
 
-
-  
-  <test thread-count="5" name="Positive_SubmitOrderTest">
+ <test thread-count="5" name="Negative_ErrorValidationTest">
     <classes>
-     <class name="tests.SubmitOrderTest"/>
-    </classes>
-  </test> 
-  
-  <test thread-count="5" name="Negative_ErrorValidationTest">
-    <classes>
-      <class name="tests.ErrorValidationTest"/>
+      <class name="tests.RSATest"/>
       
     </classes>
   </test> <!-- Test -->
+  
+  <test thread-count="5" name="Positive_SubmitOrderTest">
+    <classes>
+     <class name="tests.GoogleTest"/>
+    </classes>
+  </test> 
+  
+ 
   
   
 </suite> <!-- Suite -->

@@ -6,13 +6,13 @@
   </listeners>
   <test thread-count="5" parallel="methods" name="Negative_ErrorValidationTest(failed)">
     <classes>
-      <class name="tests.ErrorValidationTest">
+      <class name="tests.RSATest">
         <methods>
           <include name="launchApplication"/>
           <include name="teardown"/>
-          <include name="IncorrectUserName_SubmitOrder"/>
+          <include name="HomePageRSA"/>
         </methods>
-      </class> <!-- tests.ErrorValidationTest -->
+      </class> <!-- tests.RSATest -->
     </classes>
   </test> <!-- Negative_ErrorValidationTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

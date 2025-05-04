@@ -1,11 +1,14 @@
 package abstractComponents;
 
 import java.time.Duration;
+import java.util.HashMap;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -16,11 +19,21 @@ import pageObjects.CartPage;
 import pageObjects.OrderHistoryPage;
 
 public class AbstractComponent { // abstract English meaning is "Base". Generally, common methods get written here which can be used through out the project
+//The Page Layer Helper (Reusable Actions on Pages)
+//Think of this as the common toolbox used across pages.
+//
+//Purpose:
+//
+//Hold common Selenium methods that are needed across different Page Object classes (e.g., wait handling, click actions).
+//
+//Usually extended by page classes like LoginPage, CartPage, etc.
+
+
 
 	
 	WebDriver driver;
 	
-	
+	// test git collaboartion
 	public AbstractComponent(WebDriver driver) {
 		// TODO Auto-generated constructor stub
 		this.driver= driver;
@@ -32,6 +45,9 @@ public class AbstractComponent { // abstract English meaning is "Base". Generall
 	
 	@FindBy(css="[routerlink*='myorders']")
 	WebElement ButtonOrderHistory;
+	
+	
+	 
 	
 	
 	

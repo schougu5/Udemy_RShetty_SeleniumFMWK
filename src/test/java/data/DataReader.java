@@ -11,7 +11,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DataReader {
-	
+	//This code is common and hence, shifted into BaseTest
 	
 //	public List<HashMap<String, String>> getjsonDatatoMap(String filepath) throws IOException {
 //		

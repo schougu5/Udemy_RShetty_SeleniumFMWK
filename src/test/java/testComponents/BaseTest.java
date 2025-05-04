@@ -5,11 +5,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.util.AbstractCollection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
+import abstractComponents.AbstractComponent;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -18,24 +21,68 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pageObjects.LandingPage;
-import pageObjects.ProductsCatalogue;
 
 public class BaseTest {
 
 	public WebDriver driver = null;
 	public LandingPage lp;
+
+	public String downloadPath=System.getProperty("user.dir");
+	public String filePath = downloadPath + "\\download.xlsx";
 	
 	public String productName = "ZARA COAT 3";
 	
+	
+	  static {
+	      // adjust the path if your properties file lives elsewhere
+	      PropertyConfigurator.configure("src/main/java/resources/log4j.properties");
+	    }
+	    // ...
+	
+	 
+	  public void setupPath() throws InterruptedException {
+			
+			
+
+			System.out.println("Here is the downloadpath value" + downloadPath);
+
+			HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+
+			chromePrefs.put("profile.default_content_settings.popups", 0);
+
+			chromePrefs.put("download.default_directory", downloadPath);
+			chromePrefs.put("download.prompt_for_download", false);
+			chromePrefs.put("download.directory_upgrade", true);
+			chromePrefs.put("safebrowsing.enabled", true);
+
+			ChromeOptions options=new ChromeOptions();
+
+			options.setExperimentalOption("prefs", chromePrefs);
+
+			driver = new ChromeDriver(options);
+			
+			
+			
+			
+			
+			driver.get("https://rahulshettyacademy.com/upload-download-test/index.html");
+			driver.manage().window().maximize();
+			
+			System.out.println("Browser is maximised....");
+			
+			
+	 
+	        
+		}
+	  
+	  
 	public WebDriver InitializeDriver() throws IOException {
 		
 		
@@ -122,9 +169,8 @@ public class BaseTest {
 		
 		
 	}
-	
-	
-	@BeforeMethod(alwaysRun=true)
+
+	//@BeforeMethod()
 	public LandingPage launchApplication() throws IOException { // Launch browser...
 		System.out.println("Testing first before method");
 		driver=InitializeDriver();
@@ -134,7 +180,14 @@ public class BaseTest {
 		
 		return lp;
 	}
-	
+
+	@BeforeMethod()
+	public void BrowserLaunch() throws IOException { // Launch browser...
+		System.out.println("BrowserLaunch method started...");
+		driver=InitializeDriver();
+
+	}
+
 
 	public void printmessage() throws IOException {
 		
@@ -144,7 +197,7 @@ public class BaseTest {
 	@AfterMethod(alwaysRun=true)
 	public void teardown() throws InterruptedException {
 		Thread.sleep(3000);
-		driver.quit();
+	//	driver.quit();
 		Thread.sleep(5000);
 		
 		
