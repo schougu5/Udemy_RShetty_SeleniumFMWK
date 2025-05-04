@@ -1,5 +1,6 @@
 package tests;
 //pull request from git to intelliJ-demo
+//Use it for creating a new branch-QA
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
